@@ -17,6 +17,19 @@ const CallSchema = new mongoose.Schema({
     quests: {
         type: String
     },
+    hidden: {
+        type: String
+    },
+    title: {
+        type: String
+    },
+    lot: {
+        type: String
+    },
+    date: {
+        type: String,
+        required: true
+    }
 }, {
     timestamps: true,
 });

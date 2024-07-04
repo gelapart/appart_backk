@@ -58,3 +58,64 @@ export const create = async (req, res) => {
     }
 }
 
+
+export const updateVisibility = async (req, res) => {
+    const title = req.params.title;
+    const { hidden } = req.body;
+
+    try {
+        const doc = await ArticleModel.findOneAndUpdate(
+            { title },
+            { hidden },
+            { new: true }
+        );
+
+        if (!doc) {
+            return res.status(404).json({
+                message: "Товар не найден"
+            });
+        }
+
+        res.json(doc);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Не удалось обновить видимость товара"
+        });
+    }
+};
+
+
+
+export const updateInfo = async (req, res) => {
+    const title = req.params.title;
+
+    
+
+    try {
+        const doc = await ArticleModel.findOneAndUpdate(
+            { title },
+            {
+                title: req.body.title,
+                code: req.body.code,
+                seoTitle: req.body.seoTitle,
+                seoDescription: req.body.seoDescription,
+                prewieImage: req.body.prewieImage
+            },
+            { new: true }
+        );
+
+        if (!doc) {
+            return res.status(404).json({
+                message: "Товар не найден"
+            });
+        }
+
+        res.json(doc);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Не удалось обновить видимость товара"
+        });
+    }
+};

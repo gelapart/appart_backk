@@ -64,3 +64,69 @@ export const create = async (req, res) => {
     }
 }
 
+
+export const updateVisibility = async (req, res) => {
+    const postLot = req.params.lot;
+    const hidden = req.body.hidden;
+    try {
+        const doc = await PostModel.findOneAndUpdate(
+            { lot: postLot },
+            { 
+                hidden
+             },
+            { new: true }
+        );
+
+        if (!doc) {
+            return res.status(404).json({
+                message: "Товар не найден"
+            });
+        }
+
+        res.json(doc);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Не удалось обновить видимость товара"
+        });
+    }
+};
+
+
+export const updateInfo = async (req, res) => {
+    const postLot = req.params.lot;
+    const { hidden } = req.body;
+
+    try {
+        const doc = await PostModel.findOneAndUpdate(
+            { lot: postLot },
+            { 
+                title: req.body.title,
+                text: req.body.text,
+                lot: req.body.lot,
+                price: req.body.price,
+                rooms: req.body.rooms,
+                square: req.body.square,
+                quests: req.body.quests,
+                floor: req.body.floor,
+                images: req.body.images,
+                options: req.body.options,
+                map: req.body.map
+             },
+            { new: true }
+        );
+
+        if (!doc) {
+            return res.status(404).json({
+                message: "Товар не найден"
+            });
+        }
+
+        res.json(doc);
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            message: "Не удалось обновить видимость товара"
+        });
+    }
+};

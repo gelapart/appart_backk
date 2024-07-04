@@ -59,6 +59,8 @@ app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
 app.get('/posts', PostController.getAll);
 app.post('/posts', checkAuth , PostController.create);
 app.delete('/posts/:lot', checkAuth, PostController.remove);
+app.patch('/posts/:lot', checkAuth, PostController.updateVisibility);
+app.patch('/posts/update/:lot', checkAuth, PostController.updateInfo);
 
 
 
@@ -66,6 +68,8 @@ app.delete('/posts/:lot', checkAuth, PostController.remove);
 app.get('/article', ArticleController.getAll);
 app.post('/article', checkAuth , ArticleController.create);
 app.delete('/article/:name', checkAuth, ArticleController.remove);
+app.patch('/article/:title', checkAuth, ArticleController.updateVisibility);
+app.patch('/article/update/:title', checkAuth, ArticleController.updateInfo);
 
 
 
@@ -73,6 +77,7 @@ app.delete('/article/:name', checkAuth, ArticleController.remove);
 app.get('/calls', CallController.getAll)
 app.post('/calls', CallController.sendCall)
 app.delete('/calls/:id', CallController.remove)
+app.patch('/calls/:id', CallController.updateVisibility)
 
 
 const port = process.env.PORT || 3001

@@ -45,6 +45,9 @@ const PostSchema = new mongoose.Schema({
     map: {
         type: String,
         required: true
+    },
+    hidden: {
+        type: String
     }
     
 }, {

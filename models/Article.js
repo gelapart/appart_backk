@@ -20,7 +20,11 @@ const ArticleSchema = new mongoose.Schema({
     prewieImage: {
         type: String,
         required: true
+    },
+    hidden: {
+        type: String
     }
+
 })
 
 export default mongoose.model('Article', ArticleSchema);
