@@ -50,7 +50,8 @@ export const create = async (req, res) => {
             floor: req.body.floor,
             images: req.body.images,
             options: req.body.options,
-            map: req.body.map
+            map: req.body.map,
+            phone: req.body.phone
         });
 
         const post = await doc.save();
@@ -111,7 +112,8 @@ export const updateInfo = async (req, res) => {
                 floor: req.body.floor,
                 images: req.body.images,
                 options: req.body.options,
-                map: req.body.map
+                map: req.body.map,
+                phone: req.body.phone,
              },
             { new: true }
         );

@@ -48,7 +48,11 @@ const PostSchema = new mongoose.Schema({
     },
     hidden: {
         type: String
-    }
+    },
+    phone: {
+        type: String, 
+        required: true
+    },
     
 }, {
     timestamps: true,
